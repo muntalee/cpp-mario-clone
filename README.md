@@ -1,4 +1,3 @@
-# Simple C/C++ Project Setup
+# MARIO CLONE
 
-A command-line based `Makefile` setup for creating a C/C++ project. Simply edit
-the `Makefile` in order to setup the project.
+README will be updated once a working beta is complete
