@@ -34,6 +34,7 @@
 compile_commands.json
 imgui.ini
 bin
+build
 .cache
 .DS_Store
 src/debug*
