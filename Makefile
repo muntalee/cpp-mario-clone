@@ -1,36 +1,21 @@
-CXX = g++
+CXX = clang++
 OUTPUT = out
+
+CXXFLAGS = -std=c++20 -O3 -Wno-unused-result
+CXXFLAGS += -Ibuild/include -Iexternal/SFML/include -Iexternal/freetype/include
+CXXFLAGS += -Iexternal/imgui -Iexternal/imgui-sfml
+
+LDFLAGS = -Lbuild/lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
+
 PROJECT_DIR=$(shell pwd)
-
-SRC =  src/main.cpp
-SRC += $(wildcard external/imgui/*.cpp)
-SRC += $(wildcard external/imgui-sfml/*.cpp)
-
+SRC = src/main.cpp $(wildcard external/imgui/*.cpp) $(wildcard external/imgui-sfml/*.cpp)
 OBJ_DIR = obj
 OBJ = $(SRC:%.cpp=$(OBJ_DIR)/%.o)
 
-# for our libraries
 SFML_SRC_DIR = $(PROJECT_DIR)/external/SFML
 FREETYPE_SRC_DIR = $(PROJECT_DIR)/external/freetype
 
-# our compiler flags
-CXXFLAGS = -std=c++20 -O3 -Wno-unused-result -Ibuild/include
-
-# our linker flags
-LDFLAGS = -Lbuild/lib -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
-
-# specific configs for macos
-ifeq ($(shell uname -s), Darwin)
-	LDFLAGS += -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
-endif
-
-# specific configs for linux
-ifeq ($(shell uname -s), Linux)
-	LDFLAGS += -ldl -lpthread -lGL
-endif
-
-
-.PHONY: all clean run
+.PHONY: all clean run freetype sfml
 
 all: freetype sfml $(OBJ_DIR) $(OUTPUT)
 
@@ -55,13 +40,13 @@ $(OUTPUT): $(OBJ)
 
 $(OBJ_DIR)/%.o: %.cpp
 	@mkdir -p $(dir $@)
-	$(CXX) -c $< -o $@ $(CXXFLAGS) $(LDFLAGS)
+	$(CXX) -c $< -o $@ $(CXXFLAGS)
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
 clean:
-	rm -rf $(OBJ_DIR) $(OUTPUT) .cache .DS_Store build
+	rm -rf $(OBJ_DIR) $(OUTPUT) build .cache .DS_Store
 
 run: all
 	./$(OUTPUT)
