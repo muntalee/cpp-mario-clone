@@ -1,21 +1,24 @@
-#include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
+
+#include "Game.h"
+#include "Vec2.h"
+#include <iostream>
 
 int main()
 {
-    sf::Window window(sf::VideoMode(800, 600), "My window");
+    Game g("config.txt");
+    g.run();
 
-    // run the program as long as the window is open
-    while (window.isOpen())
-    {
-        // check all the window's events that were triggered since the last iteration of the loop
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            // "close requested" event: we close the window
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-    }
+    Vec2 v1(100, 100);
+    Vec2 v2(200, 200);
+
+    v1 /= 5;
+
+    std::cout << "v1: " << v1.x << ", " << v1.y << "\n";
+    //    std::cout << "v2: " << v2.x << ", " << v2.y << "\n";
+    //
+    //    Vec2 v3 = v1 + v2;
+    //    std::cout << "v3 = v1 + v2: " << v3.x << ", " << v3.y << "\n";
 
     return 0;
 }
