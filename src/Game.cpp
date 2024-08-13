@@ -205,6 +205,7 @@ void Game::spawnEnemy()
 
     // record when the most recent enemy was spawned
     m_lastEnemySpawnTime = m_currentFrame;
+    std::cout << "enemy spawned \n";
 }
 
 // spawns the small enemies on an entity e
