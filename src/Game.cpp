@@ -20,6 +20,7 @@ int randomNumber(int lower_bound, int upper_bound)
 
 Game::Game(const std::string &config)
 {
+    std::cout << "init the game!\n";
     init(config);
 }
 
@@ -30,6 +31,13 @@ void Game::init(const std::string &path)
     std::string name, fin_type;
     int win_isFullScreen, win_w, win_h;
     std::ifstream fin(path);
+
+    if(fin.fail())
+    {
+        std::cout << "failed to find file!\n";
+        return;
+    }
+
     fin >> name >> win_w >> win_h >> m_framerate >> win_isFullScreen;
 
     if (win_isFullScreen)
@@ -41,6 +49,7 @@ void Game::init(const std::string &path)
         m_window.create(sf::VideoMode(win_w, win_h), "Assignment 2");
     }
     m_window.setFramerateLimit(m_framerate);
+    std::cout << m_framerate << "\n";
 
     // reading input
     while (fin >> fin_type)
@@ -92,6 +101,11 @@ void Game::init(const std::string &path)
                 m_shieldConfig.OR >> m_shieldConfig.OG >> m_shieldConfig.OB >>
                 m_shieldConfig.OT >> m_shieldConfig.V >> m_shieldConfig.CD;
         }
+
+        std::cout << "Player " << m_playerConfig.SR << " ";
+        std::cout << m_playerConfig.CR << " ";
+        std::cout << m_playerConfig.S << " ";
+        std::cout << m_playerConfig.V << " ";
     }
 
     ImGui::SFML::Init(m_window);
@@ -205,7 +219,6 @@ void Game::spawnEnemy()
 
     // record when the most recent enemy was spawned
     m_lastEnemySpawnTime = m_currentFrame;
-    std::cout << "enemy spawned \n";
 }
 
 // spawns the small enemies on an entity e

@@ -6,7 +6,7 @@ file(GLOB SOURCES ${CMAKE_SOURCE_DIR}/src/*.cpp)
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
+option(BUILD_SHARED_LIBS "Build shared libraries" ON)
 
 include(FetchContent)
 
@@ -21,7 +21,7 @@ FetchContent_Declare(ImGui
 FetchContent_MakeAvailable(ImGui)
 FetchContent_GetProperties(ImGui SOURCE_DIR IMGUI_DIR)
 
-set(IMGUI_SFML_FIND_SFML OFF)
+# set(IMGUI_SFML_FIND_SFML OFF)
 FetchContent_Declare(ImGui-SFML
     GIT_REPOSITORY https://github.com/SFML/imgui-sfml
     GIT_TAG 2.6.x)
