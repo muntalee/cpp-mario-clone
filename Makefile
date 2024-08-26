@@ -8,7 +8,7 @@ build:
 	cmake -S . -B $(BUILD_DIR) -DCMAKE_BUILD_TYPE=Release -DCMAKE_EXPORT_COMPILE_COMMANDS=on
 
 clean:
-	rm -rf $(BUILD_DIR)
+	rm -rf $(BUILD_DIR) imgui.ini .cache .DS_Store
 
 run: compile
 	cp -R config.txt $(BUILD_DIR)/bin
