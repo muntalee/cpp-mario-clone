@@ -11,7 +11,6 @@ clean:
 	rm -rf $(BUILD_DIR) imgui.ini .cache .DS_Store
 
 run: compile
-	cp -R config.txt $(BUILD_DIR)/bin
 	cp -R assets $(BUILD_DIR)/bin
 	./$(BUILD_DIR)/bin/$(EXE)
 

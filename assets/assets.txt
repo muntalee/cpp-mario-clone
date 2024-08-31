@@ -1,37 +1,21 @@
-Texture     TexStand       images/megaman/stand_128x64.png
-Texture     TexStandShoot  images/megaman/stand_shoot.png
-Texture     TexRun         images/megaman/run_192x64.png
-Texture     TexRunShoot    images/megaman/run_shoot.png
-Texture     TexJump        images/megaman/jump.png
-Texture     TexAirShoot    images/megaman/air_shoot.png
-Texture     TexBuster      images/megaman/buster16.png
-Texture     TexExplode     images/misc/explosion64.png
-Texture     TexGround      images/mario/ground.png
-Texture     TexBrick       images/mario/brick.png
-Texture     TexBrickDebris images/mario/brick_debris.png
-Texture     TexQuestion    images/mario/question.png
-Texture     TexQuestionHit images/mario/question_hit.png
-Texture     TexCoinSpin    images/mario/coin.png
-Texture     TexTree        images/mario/tree.png
-Texture     TexCastleSmall images/mario/castle_small.png
-Texture     TexFlower      images/mario/flower.png
-Texture     TexBush        images/mario/bush.png
-Animation   Stand          TexStand       2  30
-Animation   StandShoot     TexStandShoot  1   1
-Animation   Run            TexRun         3   7
-Animation   RunShoot       TexRunShoot    3   7
-Animation   Jump           TexJump        1   1
-Animation   AirShoot       TexAirShoot    1   1
-Animation   Buster         TexBuster      1   1
-Animation   Explosion      TexExplode    12   2
-Animation   Ground         TexGround      1   1
-Animation   Brick          TexBrick       1   1
-Animation   BrickDebris    TexBrickDebris 1   1
-Animation   Question       TexQuestion    2  10
-Animation   QuestionHit    TexQuestionHit 1   1
-Animation   CoinSpin       TexCoinSpin    4  10
-Animation   Tree           TexTree        1   1
-Animation   CastleSmall    TexCastleSmall 1   1
-Animation   Flower         TexFlower      1   1
-Animation   Bush           TexBush        1   1
-Font        Mario          fonts/mario.ttf
+Font        Mario           assets/fonts/mario.ttf
+Texture     TexStand        assets/player/stand.png
+Texture     TexRun          assets/player/run.png
+Texture     TexTurn         assets/player/turn.png
+Texture     TexJump         assets/player/jump.png
+Texture     TexBullet       assets/interactables/bullet.png
+Texture     TexBrick        assets/interactables/brick.png
+Texture     TexBrickDebris  assets/effects/debris.png
+Texture     TexCoinSpin     assets/interactables/coin.png
+Texture     TexFlag         assets/interactables/flag.png
+Texture     TexQuestion     assets/interactables/question.png
+Texture     TexQuestionHit  assets/terrain/stone.png
+Texture     TexGround       assets/terrain/ground.png
+Texture     TexPipe         assets/terrain/pipe.png
+Texture     TexCastleSmall  assets/background/castle.png
+Texture     TexBushBig      assets/background/bush-1.png
+Texture     TexBushSmall    assets/background/bush-2.png
+Texture     TexCloudBig     assets/background/cloud-1.png
+Texture     TexCloudSmall   assets/background/cloud-2.png
+Texture     TexHillBig      assets/background/hill-1.png
+Texture     TexHillSmall    assets/background/hill-2.png
