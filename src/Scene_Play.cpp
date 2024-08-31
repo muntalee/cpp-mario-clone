@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "SFML//Window/Event.hpp"
-//#include "Scene_Menu.h"
+// #include "Scene_Menu.h"
 #include "Scene_Play.h"
 #include "Assets.h"
 // #include "Physics.h"
@@ -9,7 +9,6 @@
 #include "Components.h"
 #include "Action.h"
 #include "SFML/Graphics/RectangleShape.hpp"
-
 
 Scene_Play::Scene_Play(GameEngine *gameEngine, const std::string &levelPath)
     : Scene(gameEngine), m_levelPath(levelPath)
@@ -110,11 +109,6 @@ void Scene_Play::spawnPlayer()
     // TODO: be sure to add the remaining components to the player
 }
 
-void Scene_Play::spawnBullet(std::shared_ptr<Entity> entity)
-{
-    // TODO: this should spawn a bullet at the given entity, going in the direction the entity is facing
-}
-
 void Scene_Play::update()
 {
     m_entityManager.update();
@@ -152,8 +146,6 @@ void Scene_Play::sCollision()
 
     // TODO: Implement Physics::GetOverlap() function, use it inside this function
 
-    // TODO: Implement bullet/tile collisions
-    //       Destroy the tile if it has a Brick animation
     // TODO: Implement player/tile collisions and resolutions
     //       Update the CState component of the player to store whether
     //       it is currently on the ground or in the air. This will be
@@ -193,7 +185,6 @@ void Scene_Play::sDoAction(const Action &action)
     }
     else if (action.type() == "END")
     {
-
     }
 }
 
@@ -231,7 +222,7 @@ void Scene_Play::sRender()
     // draw all Entity textures / animations
     if (m_drawTextures)
     {
-        for (const auto &e: m_entityManager.getEntities())
+        for (const auto &e : m_entityManager.getEntities())
         {
             auto &transform = e->getComponent<CTransform>();
             if (e->hasComponent<CAnimation>())
@@ -239,11 +230,9 @@ void Scene_Play::sRender()
                 auto &animation = e->getComponent<CAnimation>().animation;
                 animation.getSprite().setRotation(transform.angle);
                 animation.getSprite().setPosition(
-                             transform.pos.x, transform.pos.y
-                         );
+                    transform.pos.x, transform.pos.y);
                 animation.getSprite().setScale(
-                             transform.scale.x, transform.scale.y
-                         );
+                    transform.scale.x, transform.scale.y);
                 m_game->window().draw(animation.getSprite());
             }
         }
@@ -252,7 +241,7 @@ void Scene_Play::sRender()
     // draw all Entity collision bounding boxes with a rectangle shape
     if (m_drawCollision)
     {
-        for (const auto &e: m_entityManager.getEntities())
+        for (const auto &e : m_entityManager.getEntities())
         {
             if (e->hasComponent<CBoundingBox>())
             {
@@ -275,7 +264,7 @@ void Scene_Play::sRender()
     {
         float leftX = m_game->window().getView().getCenter().x - width() / 2.0;
         float rightX = leftX + width() + m_gridSize.x;
-        float nextGridX = leftX - ((int) leftX % (int) m_gridSize.x);
+        float nextGridX = leftX - ((int)leftX % (int)m_gridSize.x);
 
         for (float x = nextGridX; x < rightX; x += m_gridSize.x)
         {
@@ -288,8 +277,8 @@ void Scene_Play::sRender()
 
             for (float x = nextGridX; x < rightX; x += m_gridSize.x)
             {
-                std::string xCell = std::to_string((int) x / (int) m_gridSize.x);
-                std::string yCell = std::to_string((int) y / (int) m_gridSize.y);
+                std::string xCell = std::to_string((int)x / (int)m_gridSize.x);
+                std::string yCell = std::to_string((int)y / (int)m_gridSize.y);
                 m_gridText.setString("(" + xCell + "," + yCell + ")");
                 m_gridText.setPosition(x + 3, height() - y - m_gridSize.y + 2);
                 m_game->window().draw(m_gridText);

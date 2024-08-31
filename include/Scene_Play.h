@@ -8,9 +8,10 @@
 #include "Scene.h"
 #include "EntityManager.h"
 
-
-class Scene_Play : public Scene {
-    struct PlayerConfig {
+class Scene_Play : public Scene
+{
+    struct PlayerConfig
+    {
         float X, Y, CX, CY, SPEED, MAX_SPEED, JUMP, GRAVITY;
         std::string WEAPON;
     };
@@ -34,8 +35,6 @@ protected:
 
     void spawnPlayer();
 
-    void spawnBullet(std::shared_ptr<Entity> entity);
-
     void sMovement();
 
     void sLifespan();
@@ -50,9 +49,9 @@ protected:
 
     void onEnd() override;
 
-//    void changePlayerStateTo(PlayerState s);
-//    void spawnCoinSpin(std::shared_ptr<Entity> tile);
-//    void spawnBrickDebris(std::shared_ptr<Entity> tile);
+    //    void changePlayerStateTo(PlayerState s);
+    //    void spawnCoinSpin(std::shared_ptr<Entity> tile);
+    //    void spawnBrickDebris(std::shared_ptr<Entity> tile);
 
 public:
     Scene_Play(GameEngine *gameEngine, const std::string &levelPath);
@@ -60,4 +59,4 @@ public:
     void update() override;
 };
 
-#endif //SCENE_PLAY_H
+#endif // SCENE_PLAY_H

@@ -35,7 +35,6 @@ Player:
 - The player can only jump if it is currently standing on a tile
 - If the jump key is held, the player should not continuously jump, but instead it should only jump once per button press. If the player lets go of the jump key mid-jump, it should start falling back down immediately
 - If the player moves left/right, the player's sprite will face in that direction until the other direction has been pressed
-- bullets shot by the player travel in the direction the player is facing.
 - The player collides with 'Tile' entities in the level (see level syntax) and cannot move through them, The player land on a Tile entity and stand in place if it falls on it from above.
 - The player does not collide with 'Dec' (decoration) entities in the level
 - If the player falls below the bottom of the screen, they respawn at the start of a level
@@ -66,10 +65,6 @@ _ Tiles can be given any Animation that is defined in the assets file
 
   Brick Tiles:
   - Brick tiles are given the 'Brick' Animation
-  - When a brick tile collides with a bullet, or is hit by a player from below:
-    - Its animation should change to 'Explosion' (non-repeat)
-    - Non-repeating animation entities are destroyed when hasEnded() is true
-    - Its CBoundingBox component should be removed
 
   Question Tiles:
   - Question tiles are given the 'Question' Animation when created
@@ -151,7 +146,6 @@ Player GX GY CW CH SX SY SM GY B
   Jump Speed            SY      float
   Max Speed             SM      float
   Gravity               GY      float
-  Bullet Animation      B       std::string (Animation asset to use for bullets)
 
 ----------------------------------------------------------------
 Assignment Hints
@@ -174,13 +168,8 @@ I recommend approaching this assignment in the following order, which will help 
 
 - Implement some basic WASD u/l/d/r movement for the player entity so that you can use this to help test collisions in the future. Remember that you must use registerAction to register a new action for the scene. See the actions already registered for you, and the sDoAction() function for syntax on how to perform actions.
 
-- Implement Scene_Play::spawnBullet()
-  Bullet should shoot when Space is pressed in same direction player facing. Holding down the space button should not continuously fire bullets. A new bullet can only be fired after the space key has been released. Use the entity's CInput.canShoot variable to implement this
-
 - Implement Physics::GetOverlap()
   This function should return the overlap dimensions between the bounding boxes of two entities. This is the same as the purple rectangle in notes. GetPreviousOverlap should be a copy/paste of this solution except using the previous positions instead of the current positions of th entity. If either input entity has no bounding box, then return Vec2(0,0).
-
-- Implement collision checking with bullets / brick tiles such that the brick is destroyed when a bullet collides with it. Remember, a collision occurs when the overlap is non-zero in both the X and Y component. Bullets should always be destroyed when they collide with any non-decorative tile.
 
 - Implement collision resolution such that when the player collides with a non-decorative tile, the player cannot enter it over overlap it. When the player collides with a tile from below, its y-velocity should be set to zero so that it falls back downward and doesn't 'hover' below the tile.
 
