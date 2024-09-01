@@ -20,6 +20,9 @@ Texture     TexHillBig      assets/background/hill-1.png
 Texture     TexHillSmall    assets/background/hill-2.png
 Animation   Run             TexRun          3   7
 Animation   CoinSpin        TexCoinSpin     4  10
-Animation   BrickDebris     TexBrickDebris  1   1
 Animation   Question        TexQuestion     3  10
-Animation   QuestionHit     Ground          1   1
+Animation   BrickDebris     TexBrickDebris  1   1
+Animation   Stand           TexStand        1   1
+Animation   QuestionHit     TexGround       1   1
+Animation   Ground          TexGround       1   1
+Animation   Brick           TexBrick        1   1
